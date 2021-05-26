@@ -1,9 +1,9 @@
 package com.geektech.less2hwkt
 
 import android.os.Bundle
+import android.view.inputmethod.InputMethodManager
 import androidx.appcompat.app.AppCompatActivity
 import com.geektech.less2hwkt.databinding.ActivityMainBinding
-import com.geektech.less2hwkt.extensions.hideKeyBoard
 import com.geektech.less2hwkt.extensions.setImage
 import com.geektech.less2hwkt.extensions.toast
 
@@ -43,5 +43,14 @@ class MainActivity : AppCompatActivity() {
                 }
             }
         }
+    }
+
+    private fun hideKeyBoard() {
+        val inputManager: InputMethodManager =
+            getSystemService(INPUT_METHOD_SERVICE) as InputMethodManager
+        inputManager.hideSoftInputFromWindow(
+            currentFocus?.windowToken,
+            InputMethodManager.SHOW_FORCED
+        )
     }
 }
